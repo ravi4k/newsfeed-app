@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">News Feed</string>
+    <string name="tab_tech_title">Technology</string>
+    <string name="tab_politics_title">Politics</string>
+    <string name="tab_lifestyle_title">Life &amp; Style</string>
+    <string name="no_internet_connection">Sorry, no internet connection.</string>
+    <string name="no_data_fetched">No News Available</string>
+</resources>

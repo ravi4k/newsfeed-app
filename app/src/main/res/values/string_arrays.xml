@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tab_titles">
+        <item>Technology</item>
+        <item>Politics</item>
+        <item>Life &amp; Style</item>
+    </string-array>
+
+    <string-array name="paths">
+        <item>technology</item>
+        <item>politics</item>
+        <item>lifeandstyle</item>
+    </string-array>
+</resources>
