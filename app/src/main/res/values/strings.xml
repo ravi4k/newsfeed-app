@@ -1,8 +1,17 @@
 <resources>
     <string name="app_name">News Feed</string>
-    <string name="tab_tech_title">Technology</string>
-    <string name="tab_politics_title">Politics</string>
-    <string name="tab_lifestyle_title">Life &amp; Style</string>
-    <string name="no_internet_connection">Sorry, no internet connection.</string>
+
+    <string name="tab_tech_title">TOP STORIES</string>
+    <string name="tab_politics_title">MOST VISITED</string>
+    <string name="tab_lifestyle_title">WORLD NEWS</string>
+
+    <string name="no_internet_connection">Sorry, no internet connection!</string>
     <string name="no_data_fetched">No News Available</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="pages_header">Pages</string>
+    <string name="title_activity_about">About</string>
 </resources>

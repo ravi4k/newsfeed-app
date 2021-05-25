@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Tab Color -->
+    <color name="tabIndicatorColor">#DDFFFF</color>
+    <color name="tabTextColor">#AAD8F1</color>
+
+    <!-- News Article Content Colors -->
+    <color name="news_section_text_color">#B82266</color>
+    <color name="news_trial_text_color">#0D7CAD</color>
+    <color name="news_title_text_color">#00507D</color>
+    <color name="news_publisher_text_color">#333333</color>
+    <color name="news_date_text_color">#004D40</color>
 </resources>

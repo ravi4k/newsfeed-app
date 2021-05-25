@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="tab_titles">
-        <item>Technology</item>
-        <item>Politics</item>
-        <item>Life &amp; Style</item>
+        <item>HOME</item>
+        <item>TECHNOLOGY</item>
+        <item>POLITICS</item>
+        <item>SPORTS</item>
+        <item>BUSINESS</item>
     </string-array>
 
     <string-array name="paths">
+        <item>home</item>
         <item>technology</item>
         <item>politics</item>
-        <item>lifeandstyle</item>
+        <item>sport</item>
+        <item>business</item>
     </string-array>
 </resources>

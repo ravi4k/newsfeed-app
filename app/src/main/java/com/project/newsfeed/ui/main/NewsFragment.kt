@@ -5,21 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.newsfeed.databinding.FragmentMainBinding
+import kotlinx.coroutines.launch
 
 class NewsFragment : Fragment() {
 
     private val newsListAdapter: NewsListAdapter = NewsListAdapter(ArrayList())
     private lateinit var fragmentMainBinding: FragmentMainBinding
-    private val viewModel: NewsFragmentViewModel by viewModels()
+    private lateinit var viewModel: NewsFragmentViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?): View {
 
+        viewModel = ViewModelProvider(this, NewsViewModelFactory(arguments?.getString("path"))).get(NewsFragmentViewModel::class.java)
         fragmentMainBinding = FragmentMainBinding.inflate(inflater, container, false)
         return fragmentMainBinding.root
     }
@@ -28,31 +30,29 @@ class NewsFragment : Fragment() {
         val recyclerView = fragmentMainBinding.newsRecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
         recyclerView.adapter = newsListAdapter
 
         fragmentMainBinding.swipeToRefresh.setOnRefreshListener {
-            updateNews()
-            fragmentMainBinding.swipeToRefresh.isRefreshing = false
+            lifecycleScope.launch {
+                updateNews()
+                fragmentMainBinding.swipeToRefresh.isRefreshing = false
+            }
         }
 
         viewModel.newsItems.observe(viewLifecycleOwner, { newsItems ->
-            newsListAdapter.clear()
-            fragmentMainBinding.loadingSpinner.visibility = View.GONE
             if(newsItems.isNotEmpty()) {
                 fragmentMainBinding.noDataText.visibility = View.GONE
+                newsListAdapter.clear()
                 newsListAdapter.updateDataSet(newsItems)
             }
             else
                 fragmentMainBinding.noDataText.visibility = View.VISIBLE
         })
-
-        updateNews()
     }
 
-    private fun updateNews() {
-        fragmentMainBinding.loadingSpinner.visibility = View.VISIBLE
-        viewModel.loadNews(arguments?.getString("path"))
+    suspend private fun updateNews() {
+        newsListAdapter.clear()
+        viewModel.loadNews()
     }
 
     companion object {
